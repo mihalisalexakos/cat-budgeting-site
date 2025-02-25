@@ -1,0 +1,845 @@
+:root {
+    --bg: 0, 0, 0;        
+    --dark: 34, 34, 34;    
+    --dark-1: 44, 44, 44; 
+    --dark-2: 51, 51, 51;  
+    --dark-3: 62, 62, 62;  
+    --dark-4: 118, 118, 118; 
+    --dark-5: 128, 128, 128; /* Grey */
+
+    --light: 234, 233, 238;
+    --light-2: 190, 190, 190;
+    --light-3: 160, 160, 160;
+
+    --red: 127, 20, 20;
+    --red-2: 140, 28, 28;
+    --red-3: 186, 30, 30;
+    --peach: 234, 114, 114;
+
+    --light-green: 45, 214, 45;
+    --plus-button: 0, 140, 255;
+
+    --delivery: rgb(196, 177, 177);
+    --goingout: rgb(210, 202, 178);
+    --groceries: rgb(196, 178, 189);
+    --other: rgb(180, 186, 168);
+    
+}
+
+
+
+body {
+    font-family: -apple-system;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgba(var(--bg),1);
+    color: white;
+
+}
+
+
+ * {
+    scrollbar-color: rgba(var(--dark), 0.5) transparent; 
+    font-family: -apple-system;
+}
+   
+button:hover{
+    border-color: rgba(var(--dark-4), 1);
+    transition: 0.3s;
+}
+
+button {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border: 3px solid transparent;
+    cursor: pointer;
+    height: 100px;
+    width: 100%;
+    background-color: rgba(var(--dark-2),1);
+    color: var(--dark-5);
+    border-radius: 30px;
+    transition: 0.1s;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+button:hover{
+    transform: scale(105%);
+}
+button i{
+    font-size: 25px;
+}
+
+button:active{
+    transform: scale(97%);
+    transition: 0.2s;
+}
+ 
+/* contains the 4 buttons in the menu for the categories */
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 30px;
+    width: 50%;
+    z-index: 1;
+}
+
+
+.buttonsSC{
+    display: none;
+}
+
+.plus-button{
+    align-self: center;
+    width: fit-content;
+    z-index: 2;
+    position: absolute;
+    height: fit-content;
+    margin-left: 10px;
+    color: rgba(var(--dark-4),1);
+}
+
+.plus-button i{
+    font-size: 20px;
+}
+
+.plus-button:hover{
+    color: rgba(var(--light));
+    border-color: rgba(var(--dark-3));
+}
+
+/* class to be added to money input */
+.amount-input.plus-button-pressed:focus{
+    color: rgba(var(--plus-button));
+    border-color: rgba(var(--plus-button));
+}
+
+.amount-input.plus-button-pressed::placeholder{
+    color: rgba(var(--plus-button));
+}
+
+.amount-input.plus-button-pressed{
+    color: rgba(var(--plus-button));
+}
+
+button.Delivery{
+    transition: 0.3s;
+    transform: scale(101%);
+    border: 3px solid var(--delivery);
+    color: var(--delivery);
+}
+
+button.GoingOut{
+    transition: 0.3s;
+    transform: scale(101%);
+    border: 3px solid  var(--goingout);
+    color: var(--goingout);
+}
+
+button.Groceries{
+    transition: 0.3s;
+    transform: scale(101%);
+    border: 3px solid  var(--groceries);
+    color: var(--groceries);
+}
+
+button.Other{
+    transition: 0.3s;
+    transform: scale(101%);
+    border: 3px solid  var(--other);
+    color: var(--other);
+}
+
+
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("default.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat:repeat;
+    z-index: -1; /* Send it behind other content */
+    opacity: 80%;
+    filter: blur(0px);
+}
+
+
+
+
+/* INPUT styling for money and description */
+    .input-container {
+        display: flex;
+        gap: 30px;
+        width: 50%;
+        height: 80px;
+        
+    }
+
+    .amount-input,
+    .description-input {
+        padding: 20px;
+        font-size: 25px;
+        background-color: rgba(var(--dark-2),1);
+        border: 3px solid transparent;
+        border-radius: 30px;
+        color: rgba(var(--light),1);
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .amount-input:focus,
+    .description-input:focus {
+        border: 3px solid rgba(var(--light-2),1);
+        transform: scale(105%);
+        transition: 0.3s;
+    }
+
+    .amount-input:focus {
+        border: 3px solid rgba(var(--light-green),1);
+        transform: scale(105%);
+        transition: 0.3s;
+    }
+
+    .amount-input:hover:not(:focus),
+    .description-input:hover:not(:focus) {
+        border: 3px solid rgba(var(--dark-4),1);
+        transform: scale(105%);
+        transition: 0.3s;
+    }
+
+    .amount-input {
+        width: 15%;
+        color: rgba(var(--light-green),1);
+        text-align: right;
+        font-size: 25px;
+        padding: 30px;
+    }
+
+    .description-input {
+        width: 85%;
+        padding: 30px;
+    }
+
+
+
+/* Notification Styles */
+    .notification {
+        position: fixed;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(var(--dark-2),1); 
+        color: rgba(var(--dark-5),1);
+        padding: 25px 30px;
+        border-radius: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .notification.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .error-notif{
+        background-color: rgba(var(--red),1);
+        color: rgba(var(--peach),1);
+    }
+
+
+/* Items Container */
+    .items-container {
+        display: flex;
+        flex-direction: column;
+
+        width: 50%;
+        min-width: 400px;
+        max-height: 60vh;
+        margin-top: 20px;
+
+        background-color: rgba(var(--bg), 0.3);
+        backdrop-filter: blur(10px);
+        color: white;
+
+        border-radius: 30px;
+        border: 3px solid transparent;
+
+        overflow: auto;
+    }
+
+    .items-container.hidden{
+        display:none;
+    }
+
+    .items-container .item{
+        align-self: center;
+    }
+    .items-container.visible {
+        max-height: 400px; 
+        opacity: 1;
+    }
+
+    .items-container.hidden {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    /* Individual Item Styling */
+        .item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            width: 100%;
+            height: 60px;
+
+            border-radius: 20px;      
+            padding: 20px;  
+            box-sizing: border-box;    
+
+            transition: 0.2s;
+        }
+        /* subclasses of item */
+        .item .amount {
+            color: rgba(var(--light-3),1);
+            font-weight: bold;
+
+        }
+        .item .description {
+            color: rgba(var(--dark-4),1);
+            margin-left: 30px;
+        }
+
+        .item:hover{
+            background-color: rgba(var(--dark-3),1);
+            transition: 0.2s;
+        }
+
+        /* styling the delete button when the item is hovered */
+        .item:hover .delete-button{
+            display: block;
+        }
+
+        .item i{
+            font-size: 25px;
+        }
+
+        .top-element{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            padding-bottom: 0px;
+            height: fit-content;
+        }
+
+.category-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgba(var(--dark-2),0.9);
+    border-radius: 30px;
+}
+
+.category-wrapper .item{
+    align-items: center;
+}
+/* HEADERS */
+    /* Total Overall Heading for all categories */
+    .total-overall {
+        color: rgba(var(--light-2),1);
+        font-size: 20px;
+        background-color: rgba(var(--dark-2),1);
+        padding: 15px;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+
+        .total-overall.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+
+        .total-overall:hover{
+            color: rgba(var(--bg),1);
+            background-color: rgba(var(--light-green),1);
+            transform: scale(110%);
+            transition: 0.3s;
+        }
+
+        .total-overall.minus:hover{
+            color: rgba(var(--bg),1);
+            background-color: rgba(var(--plus-button),1);
+            transform: scale(110%);
+            transition: 0.3s;
+        }
+
+    /* headers for each category */
+    .item-header {
+        padding: 15px;
+        color: rgba(var(--light-2),1);
+        margin: 0px;
+        font-size: 20px;
+    }
+        /* Price total for each category */
+        .total-sum {
+            margin-left: 15px;
+            font-size: 20px;
+            color: rgba(var(--light-2),1);
+        }
+
+
+
+/* ITEM DELETION BUTTONS
+    /* Clear All Button */
+    .clear-all-button {
+        padding: 15px;
+        background-color: rgba(var(--dark-2),1);
+        color: rgba(var(--dark-4),1);
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 15px;
+        width:fit-content;
+        height: fit-content;
+        transition: 0.3s;
+    }
+
+        .clear-all-button:hover {
+            background-color: rgba(var(--red),1);
+            color: rgba(var(--peach),1);
+            transform: scale(105%);
+            transition: 0.3s;
+        }
+
+        .clear-all-button.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0px;
+            margin: 0px;
+            border: none;
+        }
+
+
+    /* Delete Button for individual items */
+    .delete-button {
+        display: none;
+        width: fit-content;
+        height: auto;
+        margin: 0px;
+        margin-left: auto;
+        padding: 0px;
+        color: rgba(var(--dark),1);
+        cursor: pointer;
+        font-size: 14px;
+        border: 0px;
+        transition: 0.2s;
+        background: none;
+    }
+
+        .delete-button:hover {
+            transition: 0.2s;
+            color: rgba(var(--red-3),1);
+            transform: scale(110%);
+        }
+
+
+
+
+/* ------------------------------------------------- */
+
+
+
+    /* Delete Button for individual items */
+    .delete-note {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        color: rgba(255, 255, 255, 0.5);
+        transition: 0.2s;
+        grid-column: 2;
+        grid-row: 2;
+        place-self: center; 
+    }
+
+        .delete-note:hover {
+            transition: 0.2s;
+            color: rgba(255, 255, 255, 1);
+            transform: scale(110%);
+        }
+
+
+
+.note-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 30px;
+    width: 50%;
+    height: fit-content;
+    align-items: center;
+    
+    transition: 0.3s;
+}
+
+    .note-container{
+
+        display: flex;
+        padding: 20px;
+        width: calc(100% - 30px);
+        
+        height: auto;
+        gap: 20px;
+
+        flex-direction: column;
+        max-height: 300px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        border-radius: 30px;
+
+        background-color: rgba(var(--bg), 0.3);
+        backdrop-filter: blur(10px);
+
+        transition: 0.3s ease-out;
+    }
+
+    .note-container.hidden{
+
+        padding: 0px;
+        max-height: 0px;
+        overflow: hidden;
+        transition: 0.3s ease-out;
+    }
+
+    .note-ui{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        height: fit-content;
+        align-items: center;
+        width: 100%;
+    }
+
+
+    .note-ui .note-dropdown {
+        width: 30px;
+        height: 30px;
+        padding: 30px;
+        background-color: rgb(181, 131, 31);
+        color: white;
+
+    }
+
+
+    .note-ui .note-dropdown:hover {
+        border-color: white;
+    }
+
+    .note-ui .description-input {
+        width: 100%; 
+        height: 30px; 
+        max-height: 200px; 
+        overflow-y: auto; 
+        resize: none; 
+
+        padding: 20px;
+        font-size: 25px;
+        background-color: rgb(181, 131, 31);
+        border: 3px solid transparent;
+        border-radius: 30px;
+        color: white;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    
+    .note-ui .description-input:focus {
+        border: 3px solid white;
+        transform: scale(105%);
+        transition: 0.3s;
+    }
+
+    .note-ui .description-input:hover:not(:focus) {
+        border: 3px solid rgb(212, 204, 184);
+    }
+
+    .note {
+        display: grid;
+        align-items: center;
+
+        grid-template-columns: auto 120px;
+        grid-template-rows: 4fr 6fr;
+
+        width: 100%;
+
+        max-height: 130px;
+        min-height: 130px;
+        border-radius: 20px;         
+        border: 3px solid rgb(181, 131, 31);
+        color: white;
+        background-color: rgb(181, 131, 31);
+        font-size: 20px;
+
+        overflow: hidden;
+
+        transition: 0.3s;
+
+    }
+
+        .note-content {
+            overflow-y: auto; 
+            max-height: 100%; 
+            margin: 20px;
+            grid-row: span 2;
+            grid-column: 1;
+            word-wrap: break-word; 
+            font-size: 25px;
+        }
+        .note:hover{
+            border: 3px solid white;
+            transform: scale(100%);
+            transition: 0.2s;
+        }
+
+        .note .delete-note{
+            grid-column: 2;
+            grid-row: 2;
+        }
+
+        /* styling the delete note when the note is hovered */
+        .note:hover .delete-note{
+            display: flex;
+        }
+
+        .note i{
+            font-size: 25px;
+        }
+
+        .note .note-date{
+
+            overflow: hidden;
+            grid-column: 2;
+            grid-row: 1;
+
+            display: block;
+
+            min-width: 100px;
+            position: relative;
+
+            top: -10px;
+            font-size: 20px;
+            background-color: transparent;
+            padding: 10px;
+            color: transparent;
+
+            border-bottom-left-radius: 20px;
+            transition: 0.3s;
+
+            cursor: default;
+        }
+
+        .note:hover .note-date{
+
+            background-color: white;
+            color: rgb(181, 131, 31);
+            transition: 0.3s;
+        }
+
+
+
+    .note-dropdown:hover .ui-indicator{
+        display:block;
+    }
+
+    .fade-out {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+@media only screen and (max-width: 800px) {
+    body{
+        width: 100vw;
+    }
+    .buttons{
+        display: none;
+    }
+
+    .buttonsSC{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    button i{
+        font-size: 25px;
+    }
+    
+    button{
+        height: 70px;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 80vw;
+        z-index: 1;
+        height: fit-content;
+        transition: 0.3s;
+        position: relative;
+        
+    }
+
+    .input-container .amount-input{
+        font-size: 20px;
+        padding: 15px;
+        width: 75vw;
+        transition: 0.3s;
+        align-self: center;
+    }
+
+    .input-container .description-input{
+        width: 75vw;
+        font-size: 20px;
+        padding: 15px;
+        transition: 0.3s;
+        align-self: center;
+    }
+
+    .items-container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        max-height: 60vh;
+        margin-top: 20px;
+
+        overflow: auto;
+    }
+
+
+    .clear-all-button {
+        width: 20vw;
+        max-width: 100px;
+    }
+
+    .delete-button {
+        width: 10vw;
+        max-width: 100px;
+    }
+
+
+    .input-container .plus-button{
+        top: 23%; /* Moves button to the vertical center of the input */
+        transform: translateY(-50%); /* Centers button vertically */
+        align-self: start;
+        width: fit-content;
+        z-index: 2;
+        position: absolute;
+        height: fit-content;
+        color: rgba(var(--dark-4),1);
+    }
+    
+    .plus-button i{
+        font-size: 20px;
+    }
+
+
+}
+
+
+
+
+@media only screen and (min-width: 800px) and (max-width: 1500px) {
+    /* body{
+        border: 2px solid red;
+    } */
+
+    button i{
+        font-size: 25px;
+    }
+    
+    button{
+        height: 80px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 30px;
+        width: 50%;
+    }
+
+    .input-container .amount-input{
+        width: 30%;
+    }
+
+    .input-container .description-input{
+        width: 70%;
+    }
+
+    .clear-all-button {
+        width: 20vw;
+        max-width: 100px;
+    }
+
+    .delete-button {
+        width: fit-content;
+        max-width: 100px;
+    }
+    
+    .items-container {
+        display: flex;
+        flex-direction: column;
+
+        width: 50%;
+        min-width: 400px;
+        max-height: 50vh;
+        margin-top: 20px;
+
+        background-color: rgba(var(--bg), 0.3);
+        backdrop-filter: blur(10px);
+        color: white;
+
+        border-radius: 30px;
+        border: 3px solid transparent;
+
+        overflow: auto;
+    }
+}
+
+
+
+
+
+
+
+

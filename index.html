@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="bg-container" id="bgContainer"></div>
+
+    <div class="note-area">
+        <div id="noteContainer"class="note-container"></div>
+        <div class="note-ui">
+            <button onclick="noteDropdown()" class="note-dropdown"><i class="fa-solid fa-list-ol"></i></button>
+            <textarea id="noteInput" type="text" class="description-input" placeholder="Add new note"></textarea>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="setCategory(event, 'Delivery')"><i class="fa-solid fa-motorcycle"></i> Delivery</button>
+        <button onclick="setCategory(event, 'GoingOut')"><i class="fa-solid fa-champagne-glasses"></i> Going Out</button>
+        <button onclick="setCategory(event,'Groceries')"><i class="fa-solid fa-basket-shopping"></i> Groceries</button>
+        <button onclick="setCategory(event, 'Other')"><i class="fa-solid fa-receipt"></i> Other</button>
+    </div>
+    <div class="buttonsSC">
+        <button onclick="setCategory(event, 'Delivery')"><i class="fa-solid fa-motorcycle"></i></button>
+        <button onclick="setCategory(event, 'GoingOut')"><i class="fa-solid fa-champagne-glasses"></i></button>
+        <button onclick="setCategory(event,'Groceries')"><i class="fa-solid fa-basket-shopping"></i></button>
+        <button onclick="setCategory(event, 'Other')"><i class="fa-solid fa-receipt"></i></button>
+    </div>
+    <div class="input-container">
+        <button class="plus-button" onclick="setInputType()"><i class="fa-solid fa-plus"></i></button>
+        <input id="amountInput" type="text" pattern="[0-9]" class="amount-input" placeholder="- €">
+        <input id="descriptionInput" type="text" class="description-input" placeholder="Description">
+    </div>
+
+    <!-- Container for Displaying Items -->
+    <div id="itemsContainer" class="items-container"></div>
+
+    <!-- Notification Popup -->
+    <div id="notification" class="notification">
+        <span id="notificationMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
