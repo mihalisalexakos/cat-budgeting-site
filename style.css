@@ -771,6 +771,10 @@ button.Other{
         font-size: 20px;
     }
 
+    .note-area {
+
+        width: 80%;
+    }
 
 }
 
