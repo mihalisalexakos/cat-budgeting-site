@@ -1,12 +1,4 @@
 
-/* deleted note animations not going as expected, they fade out but i cant make the other notes
-gracefully follow and move up, they snap into position */
-
-
-/* note to self i need to add sound effects */
-
-
-
 let selectedCategory = 'Other';
 
 let expenses = {
@@ -50,7 +42,7 @@ function setInputType(){
         const minusIcon = plusButton.querySelector('.fa-minus');
         minusIcon.remove();
 
-        // change placeholder to let user know what state we are now in
+        // changes placeholder to let user know what state we are now in
         amountInput.placeholder = "- €";
         
     // button was not pressed and input is treated as money spent
@@ -397,10 +389,6 @@ document.getElementById("noteInput").addEventListener("keydown", function (event
         let lines = textBeforeCursor.split("\n"); // Get all lines before cursor
         let currentLine = lines[lines.length - 1]; // Get the current line where cursor is
 
-        // Ensure:
-        // 1. Cursor is at the beginning of an empty line
-        // 2. There is another line above (prevents early shrinking)
-        // 3. Does NOT remove extra empty lines unintentionally
         if (currentLine === "" && start > 0 && currentHeight > minHeight) {
             event.preventDefault(); // Prevent default backspace behavior
             
@@ -496,8 +484,6 @@ function UpdateNotes() {
         noteContainer.appendChild(noteDiv);
     }
     
-
-    //toggleTotalOverallVisibility();
 }
 
 function deleteNote(index) {
