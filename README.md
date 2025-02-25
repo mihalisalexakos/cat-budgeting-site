@@ -10,3 +10,5 @@ Ability to add notes! Great for noting things down you want to remind youself ne
 <img width="1152" alt="Screenshot 2025-02-25 at 12 53 16" src="https://github.com/user-attachments/assets/0d679240-efa1-4360-986a-cbda5268ebdf" />
 <img width="1152" alt="Screenshot 2025-02-25 at 12 54 39" src="https://github.com/user-attachments/assets/13b37ff8-e8ae-4efa-a01d-dc566de25f89" />
 <img width="1152" alt="Screenshot 2025-02-25 at 12 55 44" src="https://github.com/user-attachments/assets/f14fea04-4396-44db-a5de-9dd8cd90b6ce" />
+
+*cats serve as tool to give you more strength while u do boring budget management
